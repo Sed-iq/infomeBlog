@@ -11,6 +11,10 @@
     "tailwindcss": "^3.1.4",
     "yarn": "^1.22.19"
   },
+  "engines" : { 
+    "npm" : ">=7.0.0",
+    "node" : ">=16.0.0"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
