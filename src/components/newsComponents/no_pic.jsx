@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import like from "./../../../public/Thumbup.png";
 import dislike from "./../../../public/Thumbdown.png";
-import Axios from "axios";
 class noPic extends Component {
   state = {
     likes: this.props.post.likes,
+    dislike: this.props.post.dislikes,
   };
   formatter = (Dates) => {
     if (Dates == undefined) {
@@ -36,10 +36,19 @@ class noPic extends Component {
           </p>
         </a>
         <div className=" flex mt-3 flex-row">
-          <div className="mx-4 pt-2 bg-white flex flex-row">
+          <div
+            onClick={() => this.liker(this.props.post)}
+            className="mx-4 pt-2 bg-white flex flex-row"
+          >
             <img src={like} alt="like" className="w-8 inline-block mx-1" />
             <small className="pt-1">{this.likeParser(this.props.post)}</small>
           </div>
+
+          <div className="mx-4 pt-2 bg-white flex flex-row">
+            <img src={dislike} alt="like" className="w-8 inline-block mx-1" />
+            <small className="pt-1">{this.state.dislike}</small>
+          </div>
+
           <p className="font-sans pt-4 justify-self-end text-gray-700 text-right whitespace-pre-wrap text-xs sm:text-xs w-full border-3 ">
             {this.formatter(this.props.post.createdAt)}
           </p>

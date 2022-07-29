@@ -2,6 +2,8 @@
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
+  text-overflow: clip;
+  overflow-wrap: break-word;
 }
 
 body {
@@ -171,4 +173,9 @@ img {
 
 #dislike {
   transform: rotateY(180deg);
+}
+
+.text-w {
+  text-overflow: clip;
+  overflow-wrap: break-word;
 }/*# sourceMappingURL=index.css.map */

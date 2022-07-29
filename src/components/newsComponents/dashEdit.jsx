@@ -81,7 +81,7 @@ class dashEdit extends Component {
                 required
                 minLength={6}
                 maxLength={60}
-                placeholder="Write a title..."
+                placeholder="Make the title short..."
               />
             </div>
 
@@ -92,7 +92,7 @@ class dashEdit extends Component {
                   this.setState({ banner: "Welcome Admin, create a new post" })
                 }
                 name=""
-                placeholder="Write a snippet..."
+                placeholder="Make the snippet interesting and short..."
                 className="bg-white w-full focus:outline-none px-2 font-semibold max-h-14"
                 id="snippet"
                 minLength={8}
@@ -110,7 +110,7 @@ class dashEdit extends Component {
                   this.setState({ banner: "Welcome Admin, create a new post" })
                 }
                 name=""
-                placeholder="Write the main story..."
+                placeholder="Put in the full story..."
                 className="bg-white w-full focus:outline-none px-2 font-semibold "
                 required
                 id="body"

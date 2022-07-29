@@ -2,6 +2,8 @@
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
+  text-overflow: clip;
+  overflow-wrap: break-word;
 }
 body {
   background: rgb(255, 255, 255);
@@ -166,4 +168,8 @@ img {
 }
 #dislike {
   transform: rotateY(180deg);
+}
+.text-w {
+  text-overflow: clip;
+  overflow-wrap: break-word;
 }

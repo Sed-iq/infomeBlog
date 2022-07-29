@@ -9,7 +9,7 @@ class body extends Component {
         <div id="blog_body" className="flex p-3 lg:p-5w flex-col ">
           <div
             id="main_blog"
-            className=" md:min-h-max sm:w-full lg:flex lg:flex-col lg:items-centers w-full "
+            className=" md:min-h-max sm:w-11/12 lg:flex lg:flex-col lg:items-centers w-full "
           >
             {this.props.value.map((post, index) => {
               if (index == 0) {
@@ -29,7 +29,7 @@ class body extends Component {
                         <div className="title">
                           <h2
                             dangerouslySetInnerHTML={{ __html: post.title }}
-                            className=" text-sm lg:text-4xl text-justify md:text-xl font-bold"
+                            className="text-w text-sm lg:text-4xl text-justify md:text-xl font-bold"
                           ></h2>
                         </div>
                         <div className="snip">

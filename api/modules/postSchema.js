@@ -25,8 +25,16 @@ const schema = mongoose.Schema(
       type: Number,
       require: true,
     },
+    dislikes: {
+      type: Number,
+      require: true,
+    },
+    views: {
+      type: Number,
+      require: true,
+    },
     comments: {
-      type: Object,
+      type: Array,
     },
   },
   { timestamps: true }

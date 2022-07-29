@@ -18,3 +18,4 @@ yarn-error.log*
 /api/.env
 /api/node_modules
 /public/uploads
+/api

@@ -77,33 +77,56 @@ Router.delete("/delete/:id", isLogin, (req, res) => {
       console.log(err);
     });
 });
+var cookieSettings = {
+  maxAge: 50000,
+  httpOnly: true,
+  overwrite: true,
+};
 Router.post("/like/:id", (req, res) => {
-  let like_id = req.cookies.likeId;
-  if (like_id == undefined) {
-    res.cookie("likeId", [req.params.id], {
-      maxAge: 50000,
-      httpOnly: false,
-    });
+  if (req.cookies.likeId == undefined) {
     post
       .findById(req.params.id)
       .then((data) => {
         post
           .findByIdAndUpdate(data._id, { likes: data.likes + 1 })
-          .then((data) => {});
+          .then((data) => {
+            res.cookie("likeId", [req.params.id], cookieSettings);
+            res.end();
+          });
       })
       .catch((err) => {
         console.log(err);
         res.status(404).end();
       });
   } else {
-    like_id.push(req.params.id);
-    console.log(req.params.id);
-    post.findByIdAndUpdate(req.params.id, { likes: +1 });
+    req.cookies.likeId.forEach((like) => {
+      if (like == req.params.id) {
+        console.log("Already Liked", req.cookies);
+      } else {
+        console.log("like");
+      }
+    });
+    // if (req.cookies.likeId[i] == req.params.id) {
+    //   res.json({ liked: true });
+    // } else {
+    //   post.findById(req.params.id).then((data) => {
+    //     post
+    //       .findByIdAndUpdate(data._id, { likes: data.likes + 1 })
+    //       .then((data) => {
+    //         like_id.push(req.params.id);
+    //         res.cookie("likeId", like_id, {
+    //           maxAge: 50000,
+    //           httpOnly: true,
+    //         });
+    //         console.log(req.cookies.likeId);
+    //       });
+    //   });
+    // }
+    // post.findByIdAndUpdate(req.params.id, { likes: +1 });
     // res.cookie("likeId", like_id, {
     //   maxAge: 50000,
     //   httpOnly: false,
     // });
-    res.end();
   }
 });
 Router.post("/login", loginAuth);
@@ -120,7 +143,22 @@ Router.get("/category/:name", (req, res) => {
     })
     .catch((err) => res.status(404).json());
 });
+
+// Router.get("/set", ({ cookies }, res) => {
+//   res.cookie("name", "sediq", { maxAge: 60000 });
+//   console.log(cookies);
+//   res.end();
+// });
+// Router.get("/clear", (req, res) => {
+//   res.clearCookie("name");
+//   res.end();
+// });
 Router.get("/article/:id", async (req, res) => {
+  post
+    .findOne({ _id: req.params.id })
+    .then((data) =>
+      post.findByIdAndUpdate(data._id, { views: data.views + 1 })
+    );
   await post
     .findById(req.params.id)
     .then((data) => {
@@ -147,6 +185,8 @@ Router.post("/post", isLogin, upload.single("image"), (req, res) => {
       image: file,
       category: category,
       likes: 0,
+      views: 0,
+      dislikes: 0,
     });
   Post.save()
     .then((data) => {
