@@ -25,6 +25,7 @@ Router.use(
     },
   })
 );
+// Getting images
 Router.use(cookie("supersecure"));
 Router.use(
   cors({

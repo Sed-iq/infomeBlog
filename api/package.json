@@ -7,6 +7,9 @@
     "start": "node api.js",
     "dev": "nodemon api.js"
   },
+  "engines": {
+    "node": ">=16.0.0"
+  },
   "author": "IKKI TENRIO",
   "license": "ISC",
   "dependencies": {
