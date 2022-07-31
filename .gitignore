@@ -1,4 +1,6 @@
 node_modules/
 .env
 api/
-src/
+src/input.css
+src/index.css.map
+src/index.scss
